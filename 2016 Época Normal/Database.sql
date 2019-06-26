@@ -6,10 +6,23 @@ drop table if exists Amizade;
 drop table if exists Curso;
 
 /* Cria as tabelas */
-create table Estudante(ID int PRIMARY KEY, nome text, curso int REFERENCES Curso(ID), anoCurricular int);
-create table Amizade(ID1 int REFERENCES Estudante(ID), ID2 int REFERENCES Estudante(ID), PRIMARY KEY (ID1, ID2));
+create table Estudante(
+    ID int PRIMARY KEY, 
+    nome text, 
+    curso int REFERENCES Curso(ID), 
+    anoCurricular int)
+;
 
-create table Curso (ID int PRIMARY KEY, nome text);
+create table Amizade(
+    ID1 int REFERENCES Estudante(ID), 
+    ID2 int REFERENCES Estudante(ID), 
+    PRIMARY KEY (ID1, ID2))
+;
+
+create table Curso (
+    ID int PRIMARY KEY, 
+    nome text)
+;
 
 /* Insere dados nas tabelas */
 insert into Curso values (1, 'MIEIC');

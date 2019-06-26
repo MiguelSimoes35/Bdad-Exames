@@ -1,8 +1,10 @@
 /*
 Os estudantes da FEUP decidiram organizar a sua rede social usando uma base de dados com o seguinte modelo relacional
+
 Curso (ID, nome) PK(ID)
 Estudante (ID, nome, curso->Curso, anoCurricular) PK(ID)
 Amizade (ID1->Estudante, ID2->Estudante) PK(ID1, ID2)
+
 O estudante com ID1 é amigo do estudante com ID2. Como as amizades são mútuas, se (1, 2) está na tabela Amizade (2, 1) também está.
 */
 
@@ -10,13 +12,20 @@ O estudante com ID1 é amigo do estudante com ID2. Como as amizades são mútuas
 (14)
 Listar o nome de cada estudante inscrito no 3º ano curricular, e o curso em que está inscrito
 */
-
-
+select Estudante.nome, Curso.nome 
+from Estudante, Curso 
+where anoCurricular = 3 and Estudante.curso = curso.ID;
 
 /*
 (15)
 Listar o nome dos estudantes com mais de 3 amigos
 */
+
+select Estudante.nome 
+from Estudante, Amizade 
+where Estudante.ID = Amizade.ID1 
+group by Amizade.ID1 
+having count(Amizade.ID2) > 3;
 
 /*
 (16)
