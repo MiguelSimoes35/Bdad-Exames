@@ -1,9 +1,11 @@
 /*
 (14)
+Listar o nome de cada estudante inscrito no 3º ano curricular, e o curso em que está inscrito
 */
 
 /*
 (15)
+Listar o nome dos estudantes com mais de 3 amigos
 */
 
 /*
@@ -25,12 +27,18 @@ and Estudante.ID not in (
 
 /*
 (17)
+Listar os id's dos amigos em 3º grau do aluno Miguel Sampaio.
+Um amigo em 3º grau é um amigo de um amigo de um amigo.
+A listagem não deve ter tuplos repetidos.
 */
 
 /*
 (18)
+Indicar o nome e ano curricular dos estudantes que têm o maior número de amigos.
 */
 
 /*
 (19)
+Criar um gatilho que na inserção de um estudante o torne amigo de todos os estudantes do mesmo curso.
+Nota: As amizades são mútuas.
 */
