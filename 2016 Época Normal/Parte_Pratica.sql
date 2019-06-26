@@ -37,12 +37,13 @@ from Estudante
 where Estudante.ID In (
     select E1.ID
     from Estudante E1, Estudante E2, Amizade
-    where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.anoCurricular = E2.anoCurricular) 
+    where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.anoCurricular = E2.anoCurricular
+) 
 and Estudante.ID not in (
     select E1.ID 
     from Estudante E1, Estudante E2, Amizade 
-    where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.anoCurricular <> E2.anoCurricular)
-;
+    where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.anoCurricular <> E2.anoCurricular
+);
 
 /*
 (17)
@@ -55,6 +56,20 @@ A listagem não deve ter tuplos repetidos.
 (18)
 Indicar o nome e ano curricular dos estudantes que têm o maior número de amigos.
 */
+
+select Estudante.nome, Estudante.anoCurricular 
+from Estudante, Amizade 
+where Estudante.ID = Amizade.ID1 
+group by Amizade.ID1 
+having count(Amizade.ID2) = (
+    select max(friends) 
+    from (
+        select count(Amizade.ID2) as friends 
+        from Estudante, Amizade 
+        where Estudante.ID = Amizade.ID1 
+        group by Amizade.ID1
+    )
+);
 
 /*
 (19)
