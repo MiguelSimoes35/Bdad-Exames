@@ -1,7 +1,17 @@
 /*
+Os estudantes da FEUP decidiram organizar a sua rede social usando uma base de dados com o seguinte modelo relacional
+Curso (ID, nome) PK(ID)
+Estudante (ID, nome, curso->Curso, anoCurricular) PK(ID)
+Amizade (ID1->Estudante, ID2->Estudante) PK(ID1, ID2)
+O estudante com ID1 é amigo do estudante com ID2. Como as amizades são mútuas, se (1, 2) está na tabela Amizade (2, 1) também está.
+*/
+
+/*
 (14)
 Listar o nome de cada estudante inscrito no 3º ano curricular, e o curso em que está inscrito
 */
+
+
 
 /*
 (15)
