@@ -93,3 +93,17 @@ having count(Amizade.ID2) = (
 Criar um gatilho que na inserção de um estudante o torne amigo de todos os estudantes do mesmo curso.
 Nota: As amizades são mútuas.
 */
+
+create trigger NewFriends
+after insert on Estudante
+for each row
+Begin
+insert into Amizade
+    select New.ID, Estudante.ID
+    from Estudante
+    where Estudante.curso = New.curso and Estudante.ID <> New.ID;
+insert into Amizade 
+    select Estudante.ID, New.ID
+    from Estudante
+    where Estudante.curso = new.curso and Estudante.ID <> New.ID;
+End;
