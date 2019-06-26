@@ -52,6 +52,23 @@ Um amigo em 3º grau é um amigo de um amigo de um amigo.
 A listagem não deve ter tuplos repetidos.
 */
 
+create view friend as 
+select Amizade.ID2
+from Amizade, Estudante 
+where Amizade.ID1 = Estudante.Id and Estudante.nome = "Miguel Sampaio";
+
+create view friend2 as 
+select Amizade.ID2 
+from Amizade, friend 
+where Amizade.ID1 in friend and Amizade.ID2 <> '201101025';
+
+create view friend3 as 
+select Amizade.ID2 as fid3 
+from Amizade, friend2 
+where Amizade.ID1 in friend2 and Amizade.ID2 <> '201101025';
+
+select fid3 from friend3;
+
 /*
 (18)
 Indicar o nome e ano curricular dos estudantes que têm o maior número de amigos.
