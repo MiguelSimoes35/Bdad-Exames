@@ -1,0 +1,68 @@
+/*
+Chave de respostas no fim para poderem fazer sem ver as soluções!
+Nem todas as perguntas estão aqui pois não há prints delas.
+Deixo o UML para a vossa originalidade ;)
+*/
+
+(3)
+Expressão em Álgebra relacional equivalente a 
+SELECT c1, max(c2) FROM T1 NATURAL JOIN T2 WHERE c3 = 5 GROUP BY c1;
+    A) σ(c3=5) (π (c1, MAX(c2)) (T1 ⋈ T2))
+    B) π (c1, MAX(c2)) (σ(c3=5)(T1 ⋈ T2))
+    C) π (c1, MAX(c2)) (σ(c3=5)(T1) ⋈ T2)
+    D) MAX(c2) (π(c1)(σ(c3=5)(T1) ⋈ T2))
+
+(4)
+Tendo a chave primária já definida, como se define uma segunda expressão candidata em SQL?
+    (A) Com a cláusula UNIQUE
+    (B) Com a cláusula FOREIGN KEY
+    (C) Com a cláusula PRIMARY KEY
+    (D) Com uma das cláusulas PRIMARY KEY ou UNIQUE
+
+(5)
+Uma vista...
+    (A) Só pode ser usada como tabela se for materializada
+    (B) Pode ser usada como qualquer tabela, exceto só permitir inserção de registos se não juntar várias tabelas
+    (C) Pode ser usada como qualquer tabela
+    (D) Pode ser usada como qualquer tabela, exceto para operações de DELETE
+
+(7)
+Um ponto de verificação (checkpoint) serve para
+    (A) Determinar quais as transações ainda incompletas
+    (B) Definir um momento em que a base de dados está inconsistente
+    (C) Criar uma cópia de segurança
+    (D) Registar um commit
+
+(8)
+A forma tradicional de implementar escalabilidade dos servidores de bases de dados:
+    (A) É a horizontal, que consiste na partição de dados, o que implica a compra de hardware mais poderoso
+    (B) É a vertical, que consiste na implementação de vários níveis de servidores para armazenar todos os dados
+    (C) É a horizontal, que consiste na partição dos dados, o que permite suportar a base de dados em hardware menos poderoso
+    (D) É a vertical, que consiste na compra de hardware mais poderoso para armazenar todos os dados
+
+(9)
+Uma diferença essencial entre uma base de dados e um armazém de dados é que
+    (A) Ambos otimizam a velocidade de acesso de formas diferentes: a primeira minimiza a redundância enquanto o segundo a maximiza
+    (B) A primeira maximiza a redundância enquanto que o segundo a minimiza para otimizar a velocidade de consulta
+    (C) A primeira minimiza a redundância enquanto que o segundo utiliza a redundância para otimizar a velocidade de consulta
+    (D) Ambos otimizam a velocidade de acesso de formas diferentes: a primeira maximiza a redundância, enquanto que o segundo a minimiza
+
+(11)
+Considere o seguinte esquema relacional R(A, B, C, D, E, F, G, H) e as seguintes dependências funcioanais ABC->DGH; F->B; B->E; G->H.
+Qual das seguintes dependências não pode ser obtida?
+    (A) ACD->D
+    (B) AF->D
+    (C) AF->E
+    (D) AFC->D
+
+
+
+
+
+
+
+
+
+
+Chave de respostas
+(3)B (4)A (5)B (7)B (8)D (9)C (11)B
