@@ -9,6 +9,15 @@ O estudante com ID1 é amigo do estudante com ID2. Como as amizades são mútuas
 */
 
 /*
+(15)
+Liste todos os estudantes que são amigos de alguém cujo nome comece por Gabriel
+*/
+
+select E2.nome 
+from Estudante E1, Estudante E2, Amizade 
+where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.nome like "Gabriel %";
+
+/*
 (17)
 Considere que para todos os casos em que A é amigo de B e B é amigo de C, A é amigo de C.
 Crie uma tabela com as novas amizades formadas, sem amizades duplicadas, auto-amizades e amizades que já existam na tabela Amizade.
