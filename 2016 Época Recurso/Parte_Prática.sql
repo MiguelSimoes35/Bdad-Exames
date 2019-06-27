@@ -18,6 +18,20 @@ from Estudante E1, Estudante E2, Amizade
 where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.nome like "Gabriel %";
 
 /*
+(16)
+Liste o nome dos estudantes com amigos em todos os anos curriculares
+*/
+
+select nome 
+from (
+    select E1.nome, count (distinct E2.anoCurricular) as years 
+    from Estudante E1, Estudante E2, Amizade 
+    where E1.ID = Amizade.ID1 
+      and E2.ID = Amizade.ID2 
+    group by Amizade.ID1) 
+where years = 5;
+
+/*
 (17)
 Considere que para todos os casos em que A é amigo de B e B é amigo de C, A é amigo de C.
 Crie uma tabela com as novas amizades formadas, sem amizades duplicadas, auto-amizades e amizades que já existam na tabela Amizade.
