@@ -28,8 +28,12 @@ from (
     from Estudante E1, Estudante E2, Amizade 
     where E1.ID = Amizade.ID1 
       and E2.ID = Amizade.ID2 
-    group by Amizade.ID1) 
-where years = 5;
+      group by Amizade.ID1
+    ) 
+where years = (
+    select count(distinct anoCurricular) 
+    from Estudante
+);
 
 /*
 (17)
