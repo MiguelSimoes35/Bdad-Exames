@@ -50,3 +50,44 @@ where E1.id = A1.ID1
   AND E1.id <> E3.id 
   AND (E1.id, E3.id) not in Amizade
 ORDER BY E1.id, E3.id;
+
+/*
+(18)
+Liste todos os pares de amigos de cursos diferentes. A listagem não deve conter pares repetidos nem pares simétricos.
+*/
+select E1.nome, E2.nome 
+from Estudante E1, Estudante E2, Amizade 
+where E1.ID = Amizade.ID1 
+  and E2.ID = Amizade.ID2 
+  and E1.curso <> E2.curso 
+  and E1.ID < E2.ID;
+
+/*
+(19)
+Criar os triggers necessários para garantir que a amizade é mútua sempre que haja inserções ou eliminações na tabela Amizade.
+Criar também um trigger que impeça atualizações à tabela Amizade
+*/
+
+-- Inserir Amizade mútua
+create Trigger InsertAmizade
+after insert on Amizade
+begin
+insert into Amizade
+select E1.ID, E2.ID
+from Estudante E1, Estudante E2
+where E1.ID = New.ID2 and E2.ID = New.ID1;
+end;
+
+--Apagar Amizade mútua
+create Trigger DeleteAmizade
+after delete on Amizade
+begin
+delete from Amizade
+where Amizade.ID1 = Old.ID2 and Amizade.ID2 = Old.ID1;
+end;
+
+create Trigger SuspendUpdates
+before update on Amizade
+begin
+select raise(abort, 'No updates allowed');
+end;
