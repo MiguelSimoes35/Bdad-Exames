@@ -52,22 +52,12 @@ Um amigo em 3º grau é um amigo de um amigo de um amigo.
 A listagem não deve ter tuplos repetidos.
 */
 
-create view friend as 
-select Amizade.ID2
-from Amizade, Estudante 
-where Amizade.ID1 = Estudante.Id and Estudante.nome = "Miguel Sampaio";
-
-create view friend2 as 
-select Amizade.ID2 
-from Amizade, friend 
-where Amizade.ID1 in friend and Amizade.ID2 <> '201101025';
-
-create view friend3 as 
-select Amizade.ID2 as fid3 
-from Amizade, friend2 
-where Amizade.ID1 in friend2 and Amizade.ID2 <> '201101025';
-
-select fid3 from friend3;
+Select distinct E4.id 
+from Estudante E1, Estudante E2, Estudante E3, Estudante E4, Amizade A1, Amizade A2, Amizade A3 
+where E1.id = A1.ID1 AND E2.id = A1.ID2 
+  AND E2.id = A2.ID1 AND E3.id = A2.ID2 
+  and E3.id = A3.ID1 and E4.id = A3.ID2 
+  and E1.nome = "Miguel Sampaio";
 
 /*
 (18)
