@@ -43,7 +43,8 @@ and Estudante.ID not in (
     select E1.ID 
     from Estudante E1, Estudante E2, Amizade 
     where Amizade.ID1 = E1.ID and Amizade.ID2 = E2.ID and E1.anoCurricular <> E2.anoCurricular
-);
+)
+order by Estudante.anoCurricular, Estudante.nome;
 
 /*
 (17)
